@@ -1,30 +1,57 @@
 import { useRouter } from "next/router";
 import AppHead from "@/components/common/app-head";
-import { Container } from "@/styles/pages/home.page";
-import PriceTableForm from "@/components/price-table/price-table-form";
-import { PriceTableInterface } from "@/interfaces/price-table.interface";
-import { FipeService } from "@/services/fipe.service";
+import {
+  Container,
+  Content,
+  Title,
+  Text,
+  Card,
+} from "@/styles/pages/home.page";
+import { APP_MODULES_ITEMS } from "@/constants/modules.contant";
+import { useEffect } from "react";
 import { priceTableActions } from "@/store/reducers/price-table.reducer";
+import {
+  PriceTableInterface,
+  PriceTableResultInterface,
+} from "@/interfaces/price-table.interface";
 
 const Home: React.FC = () => {
   const router = useRouter();
-  const fipeService = new FipeService();
+  const modules = APP_MODULES_ITEMS.map((item, index) => {
+    const isPair = index % 2 == 0;
+    const direction = isPair ? "Left" : "Right";
 
-  const onSubmit = async (value: PriceTableInterface) => {
-    try {
-      const { data } = await fipeService.getValue(value);
-      priceTableActions.setResult(data);
-      router.push("/price-result");
-    } catch (err) {
-      console.error(err);
-    }
-  };
+    return {
+      ...item,
+      className: `animate__animated animate__fadeIn${direction}`,
+    };
+  });
+
+  const goToModule = (route: string) => router.push(route);
+
+  useEffect(() => {
+    priceTableActions.setForm({} as PriceTableInterface);
+    priceTableActions.setResult({} as PriceTableResultInterface);
+  }, []);
   return (
     <>
-      <AppHead title="Consulta" />
+      <AppHead title="Bem vindo" />
 
       <Container>
-        <PriceTableForm onSubmit={onSubmit} />
+        <Title>Bem vindo</Title>
+        <Text>Selecione o modulo para uso</Text>
+
+        <Content>
+          {modules.map((item, index) => (
+            <Card
+              key={index}
+              className={item.className}
+              onClick={() => goToModule(item.homeURL)}
+            >
+              {item.label}
+            </Card>
+          ))}
+        </Content>
       </Container>
     </>
   );

@@ -1,11 +1,12 @@
-import axios from "axios";
+import { API_MODULES_TYPES } from "./@constants/modules-types.constant";
+import { rickAndMortyApi } from "./modules/rickMortyApi";
+import { fipeApi } from "./modules/fipeApi";
 
-const axiosClient = axios.create({
-  baseURL: "https://parallelum.com.br/fipe/api/v1",
-  headers: {
-    Accept: "application/json",
-    "content-type": "application/json",
-  },
-});
+export function HttpClient(moduleId = API_MODULES_TYPES.fipeApi) {
+  const modules = {
+    [API_MODULES_TYPES.fipeApi]: fipeApi,
+    [API_MODULES_TYPES.rickAndMortyApi]: rickAndMortyApi,
+  };
 
-export const httpClient = axiosClient;
+  return modules[moduleId];
+}
