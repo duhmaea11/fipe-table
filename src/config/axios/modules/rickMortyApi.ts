@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "http://rickandmortyapi.com/api",
+  baseURL: "https://rickandmortyapi.com/api",
   headers: {
     Accept: "application/json",
     "content-type": "application/json",
