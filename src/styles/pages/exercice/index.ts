@@ -9,3 +9,8 @@ const backInDownAnimation = {
 export const Container = styled(AppContainer)`
   ${tw`min-h-screen flex items-center justify-center flex-col`}
 `;
+
+export const Link = styled.a`
+  ${tw`no-underline mt-4 cursor-pointer`}
+  color: ${({ theme }) => theme.colors.textLight};
+`;

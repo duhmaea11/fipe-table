@@ -19,7 +19,7 @@ export const Title = styled.h2.attrs(backInDownAnimation)``;
 export const Text = styled.p.attrs(backInDownAnimation)``;
 
 export const Card = styled.article`
-  ${tw`h-[20vw] w-[20vw] rounded shadow px-8 py-6 flex font-bold items-center justify-center cursor-pointer transition-all duration-500`}
+  ${tw`h-[20vw] w-[20vw] rounded shadow px-8 py-6 flex font-bold items-center justify-center cursor-pointer transition-all duration-500 sm:h-[40vw] sm:w-[40vw]`}
 
   background: ${({ theme }) => theme.colors.white};
   border: 2px solid ${({ theme }) => theme.colors.white};

@@ -11,7 +11,7 @@ export const Title = styled.p`
 `;
 
 export const Content = styled.div`
-  ${tw`grid gap-4 grid-cols-3`}
+  ${tw`grid gap-4 grid-cols-3 sm:grid-cols-1 `}
 `;
 
 export const Card = styled.article`
@@ -20,7 +20,7 @@ export const Card = styled.article`
 `;
 
 export const Image = styled.img`
-  ${tw`w-48 mb-4 rounded`}
+  ${tw`w-[90%] mb-4 rounded`}
 `;
 
 export const Text = styled.h5``;

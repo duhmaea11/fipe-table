@@ -1,7 +1,7 @@
-import { createGlobalStyle } from 'styled-components'
-import 'react-toastify/dist/ReactToastify.css'
-import 'animate.css'
-import tw from 'twin.macro'
+import { createGlobalStyle } from "styled-components";
+import "react-toastify/dist/ReactToastify.css";
+import "animate.css";
+import tw from "twin.macro";
 
 export default createGlobalStyle`
     * {
@@ -10,11 +10,15 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
 
+    body, html, #__next {
+        ${tw`overflow-x-hidden`}
+    }
+
     body {
         ${tw`text-base`}
         font-family: 'Roboto', sans-serif;
 
-        background: ${({theme}) => theme.colors.bgPrimary};
-        color: ${({theme}) => theme.colors.text};
+        background: ${({ theme }) => theme.colors.bgPrimary};
+        color: ${({ theme }) => theme.colors.text};
     }
-` 
+`;
